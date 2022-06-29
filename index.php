@@ -12,7 +12,6 @@ include("class/user.php");
 include("class/post.php");
 include("class/comment.php");
 
-
 // cheked if the user logend in 
 
 if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id'])) {
@@ -58,10 +57,12 @@ if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id'])) {
         # code...
         //    print_r($_POST);
         //    echo $id;
-        
+        var_dump($_FILES);
+
         $post = new Post();
         $id =$user_data['user_id'];
-        $result= $post->creat_post($id,$_POST);
+        $result= $post->creat_post($id,$_POST,$_FILES);
+        
 
         if ($result == "") {
             header("Location:index.php");
@@ -119,7 +120,9 @@ if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id'])) {
 
                     <form action="" method="post">
                     <textarea name="post" id="textPost" placeholder="Whate is in your mind? "></textarea>
-                    <input type="submit" value="Post" id="post_button">  
+                    <input type="file" name="my_img" > <pre></pre>
+                    <input type="submit" value="Post" id="post_button"> 
+
                     <br><br> 
                     </form>
 
@@ -133,8 +136,8 @@ if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id'])) {
                         $user = new User();
                         $ROW_USER = $user->get_user($ROW['user_id']);
                              //print_r($ROW);
+                             
             
-
                             if($ROW_USER['gender'] == "Female")
                             {
                                 $image = "img/woman.png";

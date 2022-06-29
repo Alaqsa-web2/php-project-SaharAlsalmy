@@ -2,17 +2,20 @@
 
  class Post{
     private $error = "";
-    public function creat_post($user_id,$data)
+    public function creat_post($user_id,$data,$files)
 
-    {
+     {
         if(isset($data['post'])){
-
+             $myimage = "";
+	      	$has_image = 0;
+ 
             $post = $data['post'];
              $post_id =$this->creat_post_id();
 
              $query ="INSERT INTO `my_social_media_db`.`posts`
-             (`post_id`, `post`, `user_id`) 
-             VALUES ('$post_id', '$post', '$user_id');";
+             (`post_id`, `post`, `user_id`,`image`, `has_image`) 
+             VALUES ('$post_id', '$post', '$user_id','$myimage','$has_image');";
+
            
 
             // $query ="INSERT INTO `my_social_media_db`.`posts`

@@ -3,6 +3,7 @@
 //require_once("class/post.php");
 
 require_once("class/comment.php");
+// print_r($ROW);
 
 
 if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id'])) 
@@ -74,6 +75,38 @@ if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id']))
         <?php
         echo $ROW['post'];
         ?>
+        <br><br>
+        
+      
+
+       <!-- <img src="imgs/<?php echo $imgName?>" 
+       width="150px" height="150px" > -->
+
+       <?php
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'):
+        $image=$_FILES['my_img'];
+        print_r($image); 
+        echo '<br><br>';
+        $imgName=$_FILES['my_img']['name'];
+        echo $imgName;
+
+        echo '<br><br>';
+
+        $imageType=$_FILES['my_img']['type'];
+        echo $imageType;
+
+        $imageTemp=$_FILES['my_img']['tmp_name'];
+        echo $imageTemp;
+        $path='C:\xampp\htdocs\WebProjectFinal\SocialMediaNetwork\uploads\\';
+
+        move_uploaded_file($imageTemp,$path,$imgName);
+
+    endif;    
+?>
+
+
+        
         </div>
         <div class="divNumComments">
             <i class="fa-solid fa-comment pNumComments"></i>

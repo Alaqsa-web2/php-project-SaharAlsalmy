@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 </head>
 <body>
     <main class="form-signin">
-        <form>
+        <form method="post"> 
             <a href="index.html">
               <h1 class="brand">Social Media</h1>
             </a>

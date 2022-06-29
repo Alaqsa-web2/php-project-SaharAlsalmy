@@ -1,3 +1,7 @@
+<?php
+require_once("class/user.php");
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +23,11 @@
             <img src="./img/user_female.jpg" alt="imgs" class="profile_img"> <br>
             <br> 
         
-            <div style="font: size 20px; ">Sahar .T </div>
+            <div style="font: size 20px; "> 
+                    Sahar alsalmy
+                    <?php
+                        //echo $ROW_USER['first_name'] ." ".$ROW_USER['last_name'] ;
+                     ?> </div>
             <br>
             <div id="menu_buttons">TimeLinne</div>
             <div id="menu_buttons">About</div>
