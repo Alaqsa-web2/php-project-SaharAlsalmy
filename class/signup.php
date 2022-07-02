@@ -34,7 +34,6 @@ class SignUp{
         }
         $DB = new Database();
 
-        
         if ( $this->error == "") 
         {
         //no error so creat new user 
@@ -64,10 +63,7 @@ class SignUp{
         $user_id=$this->create_user_id();
         
      
-         $query ="INSERT INTO `my_social_media_db`.`users` 
-         (`user_id`, `first_name`, `last_name`, `gender`, `email`, `password`, `url_address`)
-          VALUES ('$user_id', '$firstName', '$lastName', '$gender', '$email',
-           ' $password', '$url_address');
+         $query ="INSERT INTO `my_social_media_db`.`users` (`user_id`, `first_name`, `last_name`, `gender`, `email`, `password`, `url_address`) VALUES ('$user_id', '$firstName', '$lastName', '$gender', '$email', ' $password', '$url_address');
          ";
             
           $DB=new Database();

@@ -13,7 +13,7 @@ elseif($ROW_USER['gender'] == "Male"){
 ?>
 
 
-
+// to show comment
     <div class="comment">
     <div class="flexPostForm">
     <div class="imgPostForm">

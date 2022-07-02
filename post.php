@@ -21,14 +21,14 @@ if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id']))
 
         $comment = new Comment();
         $result= $comment->creat_comment($id,$_POST);
-         echo $result;
+         //echo $result;
 
         if ($result == "") {
             header("Location:index.php");
             die;
             
         }else {
-            echo $result;
+           // echo $result;
         }
 
     }
@@ -36,6 +36,8 @@ if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id']))
 
     //collect comment
 	$comment = new Comment();
+
+   // print_r($ROW);
 	$id = $ROW['post_id'];
 	
 	$comments = $comment->get_comment($id);
@@ -43,7 +45,7 @@ if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id']))
     //print_r($post_data);
 
 
-   // $comments = $comment->get_comment($ROW['post_id']); //رح ترجع الكومنتات الى تبعون البوست الى اليدي نفسه تبع البوست  
+    $comments = $comment->get_comment($ROW['post_id']); //رح ترجع الكومنتات الى تبعون البوست الى اليدي نفسه تبع البوست  
 }
 
 
@@ -82,7 +84,7 @@ if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id']))
        <!-- <img src="imgs/<?php echo $imgName?>" 
        width="150px" height="150px" > -->
 
-       <?php
+<!-- <?php
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'):
         $image=$_FILES['my_img'];
@@ -103,7 +105,7 @@ if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id']))
         move_uploaded_file($imageTemp,$path,$imgName);
 
     endif;    
-?>
+?> -->
 
 
         
@@ -124,7 +126,8 @@ if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id']))
                     <form  method="post" enctype="multipart/form-data">
                     <textarea class="form-control" name="comment" id="textPost" placeholder="Type your comment ">
                     </textarea>
-                    <!-- <input type="hidden" name="parent" <?php 'value' .'='. $value= $ROW['post_id'] ; ?> > -->
+                    <!-- <input type="hidden" name="parent" <?php //'value' .'='. $value= $ROW['post_id'] ; ?> 
+                    > -->
 
                     <input class="commentbtn" type="submit" value="Comment" style="font-size:12px;float:right;
                     background-color: #548de9; padding: 3px; border-radius: 4px;
@@ -144,15 +147,13 @@ if (isset($_SESSION['user_id']) && is_numeric($_SESSION['user_id']))
     <?php
     if(isset($comments) && $comments){
         foreach ($comments as $COMMENT) {
-           // if ($value == $ROW['post_id']) {  //
+
+            if ($value == $ROW['post_id']) {  //
                 include("comment.php");
-            //}
-           // print_r($COMMENT);
-           
-         
-           
-    
             }
+            print_r($COMMENT);
+        
+     }
     }
             ?> 
 

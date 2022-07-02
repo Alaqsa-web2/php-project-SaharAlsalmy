@@ -16,13 +16,9 @@ class Login{
          if ($result) {
              $row = $result[0];
              //print_r($row);
-
              if($password == $row['password']){
                  //create session data
-                 
-
                  $_SESSION['user_id'] = $row['user_id'];
-
                 // echo  $_SESSION['user_id'];
 
 
@@ -36,7 +32,7 @@ class Login{
 
          }
          return  $this->error;
-         print_r($row);
+         //print_r($row);
     
     }
 
@@ -46,8 +42,7 @@ class Login{
         // FROM users
         // WHERE userid = '$id limit 1';";
 
-        $query="SELECT `user_id` FROM `my_social_media_db`.`users` 
-        WHERE `user_id` =$id LIMIT 1;";
+        $query="SELECT `user_id` FROM `my_social_media_db`.`users` WHERE `user_id` =$id LIMIT 1;";
 
         
         $DB=new Database();
